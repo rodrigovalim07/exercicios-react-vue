@@ -7,9 +7,28 @@
     <script src="/js/vue.min.js"></script>
 </head>
 <body class="exercicio">
+    <div id="app">
+        <saudacao :nome="nomeAtual"></saudacao>    
+        <input type="text" v-model="nomeAtual" placeholder="Digite seu nome">
 
+        <saudacao nome="Ana"></saudacao>
+        <saudacao nome="Bia"></saudacao>
+        <saudacao nome="Julia"></saudacao>
+    </div>
     <script>
-        // ...
+        Vue.component('saudacao', {
+            props: ['nome'],
+            template: `
+                <div>Bom dia {{ nome }}!</div>
+            `
+        })
+
+        new Vue({
+            el: "#app",
+            data: {
+                nomeAtual: ''
+            }
+        })
     </script>
 </body>
 </html>
